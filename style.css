@@ -70,6 +70,41 @@ h1 {
   color: #001f3f;
 }
 
+.field-programs-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.field-text {
+  flex: 1 1 400px; /* Takes at least 400px, grows as needed */
+}
+
+.field-text h1 {
+  color: #001f3f;
+  margin-bottom: 1rem;
+}
+
+.field-text ul {
+  list-style: disc inside;
+  line-height: 1.6;
+}
+
+.field-image {
+  flex: 1 1 400px; /* Image column */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.field-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
 footer {
   text-align: center;
   padding: 1rem;
