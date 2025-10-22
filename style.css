@@ -69,6 +69,51 @@ main {
 h1 {
   color: #001f3f;
 }
+/* --- Additional Styling for Home Section --- */
+#home {
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+#home h2 {
+  color: #001f3f;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#home ul {
+  list-style: none;
+  padding: 0;
+}
+
+#home ul li {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+#home ul li::before {
+  content: "•";
+  color: #0055a5;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+#home a {
+  color: #0055a5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#home a:hover {
+  text-decoration: underline;
+}
 
 .field-programs-container {
   display: flex;
