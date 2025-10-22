@@ -1,3 +1,4 @@
+/* --- General Page Styling --- */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -5,6 +6,7 @@ body {
   color: #333;
 }
 
+/* --- Header --- */
 header {
   display: flex;
   align-items: center;
@@ -19,7 +21,7 @@ header {
 }
 
 .logo img {
-  height: 50px; /* Adjust size as needed */
+  height: 50px;
 }
 
 .logo-text {
@@ -54,22 +56,12 @@ nav ul li a.active {
   border-radius: 4px;
 }
 
+/* --- Main Content --- */
 main {
   padding: 2rem;
 }
 
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-h1 {
-  color: #001f3f;
-}
-/* --- Additional Styling for Home Section --- */
+/* --- Home Section --- */
 #home {
   line-height: 1.7;
   max-width: 900px;
@@ -80,10 +72,21 @@ h1 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
+#home h1 {
+  color: #001f3f;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
 #home h2 {
   color: #001f3f;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
+}
+
+#home p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
 }
 
 #home ul {
@@ -115,6 +118,22 @@ h1 {
   text-decoration: underline;
 }
 
+/* --- Section Content Boxes --- */
+section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 1000px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #001f3f;
+  margin-bottom: 1rem;
+}
+
+/* --- Field Programs Section --- */
 .field-programs-container {
   display: flex;
   flex-wrap: wrap;
@@ -123,7 +142,7 @@ h1 {
 }
 
 .field-text {
-  flex: 1 1 400px; /* Takes at least 400px, grows as needed */
+  flex: 1 1 400px;
 }
 
 .field-text h1 {
@@ -137,7 +156,7 @@ h1 {
 }
 
 .field-image {
-  flex: 1 1 400px; /* Image column */
+  flex: 1 1 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,10 +169,53 @@ h1 {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* --- Agriculture Section --- */
+#agriculture h1 {
+  color: #001f3f;
+}
+
+#agriculture p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* --- About Section --- */
+#about h1 {
+  color: #001f3f;
+}
+
+#about p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* --- Footer --- */
 footer {
   text-align: center;
   padding: 1rem;
   background-color: #001f3f;
   color: white;
   margin-top: 2rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .field-programs-container {
+    flex-direction: column;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  nav ul li {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
 }
