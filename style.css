@@ -210,3 +210,19 @@ footer a {
   from { background-position: -200% 0; }
   to   { background-position: 200% 0; }
 }
+
+/* Improve body text spacing */
+section p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+section h1,
+section h2,
+section h3 {
+  margin-bottom: 1rem;
+}
+
+section {
+  line-height: 1.6;
+}
