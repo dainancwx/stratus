@@ -1,18 +1,16 @@
-* {
-    font-family: Arial, sans-serif;
-}
-
-nav ul li a {
-    font-family: Arial, sans-serif !important;
-}
 /* =========================
-   BASE
+   GLOBAL RESET
 ========================= */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #000000, #111111);
+  background: linear-gradient(to bottom, #000000, #111111);
 }
 
 /* =========================
@@ -20,127 +18,126 @@ body {
 ========================= */
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #ffffff;
-    padding: 1.2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 1.2rem 2.5rem;
+  position: relative;
 }
 
 /* Logo shimmer */
 
 .logo-text {
-    font-size: 1.6rem;
-    font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 700;
 
-    background: linear-gradient(
-        90deg,
-        #000000,
-        #555555,
-        #ffffff,
-        #555555,
-        #000000
-    );
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #444444 45%,
+    #ffffff 50%,
+    #444444 55%,
+    #000000 100%
+  );
 
-    background-size: 300%;
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    animation: shimmer 5s linear infinite;
+  animation: shimmer 10s linear infinite;
 }
 
 /* =========================
-   NAVIGATION (STABLE)
+   NAVIGATION
 ========================= */
 
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
 }
 
 nav ul li a {
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
 
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
 
-    display: inline-block;
+  display: inline-block;
+  position: relative;
 
-    transition: background 0.3s ease;
+  transition: background 0.3s ease;
 }
 
-/* TEXT SHIMMER (always active) */
+/* TEXT SHIMMER */
+
 nav ul li a span {
-    background: linear-gradient(
-        90deg,
-        #000000 0%,
-        #333333 30%,
-        #ffffff 50%,
-        #333333 70%,
-        #000000 100%
-    );
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #444444 45%,
+    #ffffff 50%,
+    #444444 55%,
+    #000000 100%
+  );
 
-    background-size: 250%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
-    animation: shimmer 6s linear infinite;
+  animation: shimmer 8s linear infinite;
 }
 
-/* HOVER BUTTON */
+/* HOVER BACKGROUND SHIMMER */
+
 nav ul li a:hover {
-    background: linear-gradient(
-        90deg,
-        #000000,
-        #222222,
-        #555555,
-        #222222,
-        #000000
-    );
-    background-size: 250%;
-    animation: shimmer 3s linear infinite;
+  background: linear-gradient(
+    90deg,
+    #000000 0%,
+    #222222 45%,
+    #555555 50%,
+    #222222 55%,
+    #000000 100%
+  );
+  background-size: 200%;
+  animation: shimmer 6s linear infinite;
 }
 
-/* WHITE TEXT ON HOVER */
 nav ul li a:hover span {
-    -webkit-text-fill-color: white;
+  -webkit-text-fill-color: white;
 }
+
 /* =========================
    MAIN CONTENT
 ========================= */
 
 main {
-    padding: 2rem;
+  padding: 2rem;
 }
 
 section {
-    background: white;
-    border-radius: 12px;
-    padding: 2.5rem;
-    margin: 3rem auto;
-    max-width: 950px;
-
-    box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin: 3rem auto;
+  max-width: 950px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.25);
 }
 
 section h1::after {
-    content: "";
-    display: block;
-    width: 70px;
-    height: 4px;
-    background: black;
-    margin-top: 10px;
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: black;
+  margin-top: 10px;
 }
 
 section, p, h1, h2, h3, li {
-    color: black;
+  color: black;
 }
 
 /* =========================
@@ -148,29 +145,17 @@ section, p, h1, h2, h3, li {
 ========================= */
 
 footer {
-    text-align: center;
-    padding: 1rem;
-    background: white;
-    margin-top: 2rem;
-}
-
-/* Remove footer list bullets */
-
-footer ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-footer ul li {
-    display: inline-block;
+  text-align: center;
+  padding: 1rem;
+  background: white;
+  margin-top: 2rem;
 }
 
 footer a {
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  text-decoration: none;
+  margin: 0 10px;
+  display: inline-flex;
+  align-items: center;
 }
 
 /* =========================
@@ -178,51 +163,50 @@ footer a {
 ========================= */
 
 .menu-toggle {
-    display: none;
-    font-size: 2rem;
-    cursor: pointer;
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
 
-    .menu-toggle {
-        display: block;
-    }
+  .menu-toggle {
+    display: block;
+  }
 
-    nav {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 100%;
-    }
+  nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+  }
 
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: white;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: white;
+    padding: 1rem 0;
+  }
 
-    .nav-links.active {
-        display: flex;
-    }
+  .nav-links.active {
+    display: flex;
+  }
 
-    .nav-links li {
-        text-align: center;
-    }
+  .nav-links li {
+    text-align: center;
+    margin: 0.5rem 0;
+  }
 
-    .nav-links li a {
-        display: block;
-        padding: 1rem;
-        border-top: 1px solid #ddd;
-    }
+  .nav-links li a {
+    display: block;
+  }
 }
 
 /* =========================
-   ANIMATION
+   SINGLE SHIMMER ANIMATION
 ========================= */
 
 @keyframes shimmer {
-    from { background-position: 300% 0; }
-    to { background-position: -300% 0; }
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
 }
