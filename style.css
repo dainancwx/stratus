@@ -50,7 +50,9 @@ header {
     animation: shimmer 5s linear infinite;
 }
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION (STABLE)
+========================= */
 
 nav ul {
     list-style: none;
@@ -61,6 +63,7 @@ nav ul {
 }
 
 nav ul li a {
+    font-family: Arial, sans-serif;
     font-weight: bold;
     text-decoration: none;
     color: black;
@@ -68,45 +71,31 @@ nav ul li a {
     padding: 0.6rem 1.2rem;
     border-radius: 6px;
 
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
 
-    overflow: hidden;
-
-    background: black;
+    transition: background 0.3s ease;
 }
 
-/* NAV TEXT */
-
+/* TEXT SHIMMER (always active) */
 nav ul li a span {
-    position: relative;
-    z-index: 2;
-
-    color: white;
-
-    animation: shimmer 5s linear infinite;
-
     background: linear-gradient(
         90deg,
-        #ffffff,
-        #888888,
-        #ffffff
+        #000000 0%,
+        #333333 30%,
+        #ffffff 50%,
+        #333333 70%,
+        #000000 100%
     );
 
-    background-size: 300%;
+    background-size: 250%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    animation: shimmer 6s linear infinite;
 }
 
-/* BUTTON SHIMMER BACKGROUND */
-
-nav ul li a::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
+/* HOVER BUTTON */
+nav ul li a:hover {
     background: linear-gradient(
         90deg,
         #000000,
@@ -115,20 +104,13 @@ nav ul li a::before {
         #222222,
         #000000
     );
-
-    background-size: 300%;
-
-    opacity: 1;
-    z-index: 1;
-
-    animation: shimmer 5s linear infinite;
+    background-size: 250%;
+    animation: shimmer 3s linear infinite;
 }
 
-/* ANIMATION */
-
-@keyframes shimmer {
-    from { background-position: 300% 0; }
-    to { background-position: -300% 0; }
+/* WHITE TEXT ON HOVER */
+nav ul li a:hover span {
+    -webkit-text-fill-color: white;
 }
 /* =========================
    MAIN CONTENT
