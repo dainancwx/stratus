@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storm Chase Map | Dainan Caywood WX</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="logo-text shimmer-silver">Dainan Caywood WX</div>
+
+  <div class="menu-toggle" id="mobile-menu">☰</div>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html"><span>Home</span></a></li>
+      <li><a href="projects.html"><span>Projects</span></a></li>
+      <li><a href="gallery.html"><span>Gallery</span></a></li>
+      <li><a href="chases.html"><span>Chases</span></a></li>
+      <li><a href="about.html"><span>About Me</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section>
+<h1>Interactive Chase Map</h1>
+<p>Click any state to view my chase history.</p>
+
+<div style="max-width:1000px; margin:auto; padding-top:20px;">
+
+<object
+type="image/svg+xml"
+data="https://upload.wikimedia.org/wikipedia/commons/5/5a/Blank_US_Map_%28states_only%29.svg"
+id="us-map"
+style="width:100%; height:600px; border:none;">
+</object>
+
+</div>
+
+<div id="state-info" style="
+margin-top:30px;
+padding:25px;
+background:#111;
+color:white;
+border-radius:12px;
+">
+
+<h2>Select a State</h2>
+<p>Your chase history will appear here.</p>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+<p>© 2026 Dainan Caywood | All rights reserved</p>
+</footer>
+
+<script>
+
+/* MOBILE MENU */
+const menu = document.getElementById("mobile-menu");
+const navLinks = document.querySelector(".nav-links");
+
+menu.addEventListener("click", () => {
+navLinks.classList.toggle("active");
+});
+
+/* YOUR CHASE DATA */
+const chaseData = {
+
+MO: {
+name: "Missouri",
+text: "14 Chases • Home state • Multiple severe weather intercepts."
+},
+
+KS: {
+name: "Kansas",
+text: "6 Chases • Classic supercells and tornado setups."
+},
+
+OK: {
+name: "Oklahoma",
+text: "4 Chases • Dryline storms and photogenic structure."
+},
+
+TX: {
+name: "Texas",
+text: "3 Chases • Large hail and LP supercells."
+},
+
+NE: {
+name: "Nebraska",
+text: "2 Chases • Isolated tornado setups."
+},
+
+IA: {
+name: "Iowa",
+text: "1 Chase • Shelf cloud event."
+}
+
+};
+
+/* MAKE MAP CLICKABLE */
+document.getElementById("us-map").addEventListener("load", function () {
+
+const svgDoc = this.contentDocument;
+
+for (const code in chaseData) {
+
+const state = svgDoc.getElementById(code);
+
+if(state){
+
+state.style.cursor = "pointer";
+state.style.transition = "0.3s";
+state.style.fill = "#222";
+
+state.addEventListener("mouseover", () => {
+state.style.fill = "#00bfff";
+});
+
+state.addEventListener("mouseout", () => {
+state.style.fill = "#222";
+});
+
+state.addEventListener("click", () => {
+
+document.getElementById("state-info").innerHTML = `
+<h2>${chaseData[code].name}</h2>
+<p>${chaseData[code].text}</p>
+`;
+
+});
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
