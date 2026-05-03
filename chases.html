@@ -31,63 +31,17 @@
 <h1>Storm Chase Map</h1>
 <p>Click a state to view my chase history.</p>
 
+<!-- REAL SVG MAP FILE -->
 <div style="max-width:1100px; margin:auto; padding-top:25px;">
-
-<svg id="us-map" viewBox="0 0 1000 620" style="width:100%; height:auto;">
-
-<!-- WEST -->
-<rect id="WA" class="state" x="70" y="70" width="70" height="45"/>
-<rect id="OR" class="state" x="70" y="120" width="70" height="55"/>
-<rect id="CA" class="state" x="70" y="180" width="70" height="140"/>
-<rect id="NV" class="state" x="145" y="180" width="60" height="100"/>
-<rect id="AZ" class="state" x="145" y="285" width="75" height="85"/>
-<rect id="ID" class="state" x="145" y="80" width="65" height="95"/>
-<rect id="UT" class="state" x="210" y="185" width="60" height="95"/>
-<rect id="MT" class="state" x="220" y="80" width="95" height="60"/>
-<rect id="WY" class="state" x="250" y="150" width="85" height="55"/>
-<rect id="CO" class="state" x="270" y="215" width="85" height="60"/>
-<rect id="NM" class="state" x="270" y="285" width="85" height="85"/>
-
-<!-- PLAINS -->
-<rect id="ND" class="state" x="370" y="80" width="80" height="50"/>
-<rect id="SD" class="state" x="370" y="140" width="80" height="50"/>
-<rect id="NE" class="state" x="370" y="200" width="80" height="50"/>
-<rect id="KS" class="state" x="370" y="260" width="80" height="50"/>
-<rect id="OK" class="state" x="370" y="320" width="100" height="45"/>
-<rect id="TX" class="state" x="370" y="375" width="155" height="120"/>
-
-<!-- MIDWEST -->
-<rect id="MN" class="state" x="470" y="80" width="75" height="70"/>
-<rect id="IA" class="state" x="470" y="190" width="75" height="55"/>
-<rect id="MO" class="state" x="470" y="255" width="75" height="75"/>
-<rect id="AR" class="state" x="470" y="340" width="75" height="70"/>
-<rect id="LA" class="state" x="470" y="420" width="75" height="65"/>
-
-<rect id="WI" class="state" x="555" y="95" width="55" height="70"/>
-<rect id="IL" class="state" x="555" y="220" width="45" height="100"/>
-<rect id="IN" class="state" x="605" y="225" width="40" height="95"/>
-<rect id="MI" class="state" x="615" y="105" width="60" height="90"/>
-<rect id="OH" class="state" x="650" y="225" width="45" height="95"/>
-
-<!-- SOUTH -->
-<rect id="MS" class="state" x="555" y="360" width="45" height="95"/>
-<rect id="AL" class="state" x="605" y="360" width="45" height="95"/>
-<rect id="GA" class="state" x="655" y="360" width="55" height="95"/>
-<rect id="FL" class="state" x="715" y="440" width="130" height="40"/>
-
-<!-- EAST -->
-<rect id="KY" class="state" x="610" y="320" width="95" height="35"/>
-<rect id="TN" class="state" x="610" y="360" width="130" height="35"/>
-<rect id="VA" class="state" x="745" y="280" width="105" height="35"/>
-<rect id="NC" class="state" x="745" y="320" width="105" height="40"/>
-<rect id="SC" class="state" x="760" y="365" width="75" height="40"/>
-<rect id="PA" class="state" x="740" y="205" width="95" height="55"/>
-<rect id="NY" class="state" x="740" y="135" width="95" height="55"/>
-
-</svg>
-
+<object
+id="us-map"
+type="image/svg+xml"
+data="us.svg"
+style="width:100%; height:700px; border:none;">
+</object>
 </div>
 
+<!-- INFO BOX -->
 <div id="state-info" style="
 margin-top:30px;
 padding:25px;
@@ -95,10 +49,8 @@ background:#111;
 color:white;
 border-radius:12px;
 ">
-
 <h2>Select a State</h2>
 <p>Your chase history will appear here.</p>
-
 </div>
 
 </section>
@@ -110,18 +62,15 @@ border-radius:12px;
 </footer>
 
 <style>
-.state{
-fill:#222;
-stroke:white;
-stroke-width:2;
+/* loaded svg states */
+.hovered{
+fill:#00bfff !important;
+transition:0.2s;
 cursor:pointer;
-transition:0.25s;
 }
 
-.state:hover{
-fill:#00bfff;
-transform:scale(1.02);
-transform-origin:center;
+.visited{
+fill:#333 !important;
 }
 </style>
 
@@ -135,7 +84,7 @@ menu.addEventListener("click", () => {
 navLinks.classList.toggle("active");
 });
 
-/* CHASE DATA */
+/* YOUR CHASE DATA */
 const chaseData = {
 
 MO:{name:"Missouri",text:"14 Chases • Home state • Multiple severe weather intercepts."},
@@ -151,21 +100,51 @@ FL:{name:"Florida",text:"Vacation storms and lightning photography."}
 
 };
 
-/* CLICK STATES */
-document.querySelectorAll(".state").forEach(state=>{
+/* LOAD SVG */
+document.getElementById("us-map").addEventListener("load", function(){
 
-state.addEventListener("click",()=>{
+const svgDoc = this.contentDocument;
 
-const code = state.id;
+/* Try all paths */
+const states = svgDoc.querySelectorAll("path");
 
-if(chaseData[code]){
+states.forEach(state=>{
+
+const id = state.id.toUpperCase();
+
+/* dark default */
+state.style.fill = "#222";
+state.style.stroke = "#fff";
+state.style.strokeWidth = "1";
+state.style.cursor = "pointer";
+
+/* visited states darker blue */
+if(chaseData[id]){
+state.style.fill = "#2d3e50";
+}
+
+state.addEventListener("mouseenter", ()=>{
+state.style.fill = "#00bfff";
+});
+
+state.addEventListener("mouseleave", ()=>{
+if(chaseData[id]){
+state.style.fill = "#2d3e50";
+}else{
+state.style.fill = "#222";
+}
+});
+
+state.addEventListener("click", ()=>{
+
+if(chaseData[id]){
 document.getElementById("state-info").innerHTML = `
-<h2>${chaseData[code].name}</h2>
-<p>${chaseData[code].text}</p>
+<h2>${chaseData[id].name}</h2>
+<p>${chaseData[id].text}</p>
 `;
 }else{
 document.getElementById("state-info").innerHTML = `
-<h2>${code}</h2>
+<h2>${id}</h2>
 <p>No chase data added yet.</p>
 `;
 }
@@ -174,6 +153,7 @@ document.getElementById("state-info").innerHTML = `
 
 });
 
+});
 </script>
 
 </body>
